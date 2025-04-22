@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taima's Special Page</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Embedded CSS -->
+  <style>
+    /* Custom fonts */
+    .font-handwritten { font-family: 'Dancing Script', cursive; }
+    .font-body { font-family: 'Open Sans', sans-serif; }
+
+    /* Heart animation */
+    .heart {
+      position: fixed;
+      bottom: 0;
+      width: 40px;
+      height: 40px;
+      background-color: #ff4d4d;
+      transform: rotate(-45deg);
+      opacity: 0;
+      animation: floating-heart 8s infinite ease-in;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #ff4d4d;
+      border-radius: 50%;
+    }
+    .heart::before { top: -20px; left: 0; }
+    .heart::after { left: 20px; top: 0; }
+
+    @keyframes floating-heart {
+      0% { bottom: 0%; opacity: 0; transform: rotate(-45deg) translateX(0); }
+      10% { opacity: 1; }
+      50% { bottom: 50%; transform: rotate(-45deg) translateX(25%); }
+      80% { opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+
+    .heart:nth-child(1) { animation-delay: 0s; }
+    .heart:nth-child(2) { animation-delay: 2s; }
+    .heart:nth-child(3) { animation-delay: 4s; }
+    .heart:nth-child(4) { animation-delay: 6s; }
+
+    /* Typewriter effect */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #fff;
+      width: 0;
+      animation: typing 5s steps(60, end) forwards, blink 0.75s step-end infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes typing { from { width: 0; } to { width: 100%; } }
+    @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
+
+    /* Gallery hover effect */
+    .gallery-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+
+    /* Timeline dot styling */
+    .timeline-dot::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background-color: #ff4d4d;
+      border-radius: 50%;
+      border: 3px solid #8B0000;
+    }
+  </style>
+</head>
+<body class="bg-[#8B0000] font-body text-white relative overflow-x-hidden">
+
+  <!-- Floating hearts -->
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+
+  <!-- Header Section -->
+  <header class="text-center py-12 px-4">
+    <h1 class="text-5xl font-handwritten drop-shadow-lg">Welcome, Taima! ❤️</h1>
+    <p class="text-xl text-red-200 font-semibold mt-4">This page is made just for you with all my love.</p>
+  </header>
+
+  <!-- Favorite Songs -->
+  <section class="py-10 px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-8">Your Favorite Songs</h2>
+    <div class="flex flex-col md:flex-row md:justify-center md:space-x-12 space-y-8 md:space-y-0 items-center">
+      <div>
+        <p class="mb-2 font-semibold">🎵 <em>[End of beginning]</em></p>
+        <audio controls><source src="song1.mp3" type="audio/mpeg"></audio>
+      </div>
+      <div>
+        <p class="mb-2 font-semibold">🎵 <em>[Atlantis]</em></p>
+        <audio controls><source src="song2.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- Love Letter -->
+  <section class="py-10 px-6 max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-semibold mb-6">A Love Letter</h2>
+    <p class="text-lg typewriter font-handwritten">
+      Dear Taima, I still remember the first day we met and how my heart knew I had found someone truly special. You inspire me, make me laugh, and fill my life with happiness. I love you forever.<br><em>Love, [Mumin]</em>
+    </p>
+  </section>
+
+  <!-- Gallery -->
+  <section class="py-10 px-4">
+    <h2 class="text-3xl font-semibold text-center mb-8">Gallery of Memories</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <img src="image1.jpg" class="gallery-img" />
+      <img src="image2.jpg" class="gallery-img" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-red-200">
+    Made with ❤️ by [Mumin]
+  </footer>
+
+  <script>
+    document.querySelectorAll('.heart').forEach(heart => {
+      heart.style.left = Math.random() * 100 + "%";
+    });
+  </script>
+</body>
+</html>
